@@ -1,0 +1,38 @@
+{
+  "name": "udemy2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main/webapp/assets/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development webpack --mode development",
+    "build": "NODE_ENV=production webpack --mode production",
+    "serve": "webpack-dev-server --mode development --open",
+    "clean": "rm -r ./dist/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arithmetic": "^1.0.1",
+    "repeat-string": "^1.6.1"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "devDependencies": {
+    "@webpack-cli/serve": "^0.1.0",
+    "autoprefixer": "^9.1.5",
+    "css-loader": "^1.0.0",
+    "html-beautify-webpack-plugin": "^1.0.5",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  }
+}
