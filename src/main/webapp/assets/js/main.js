@@ -1,4 +1,7 @@
-import style from "../styles/main.scss";
-import logger from "./logger";
+// Transpile all code following this line with babel and use 'env' (aka ES6) preset.
+require('babel-register')({
+    presets: [ 'env' ]
+})
 
-console.log("Hi!")
+// Import the rest of our application.
+module.exports = require('./logger.js')

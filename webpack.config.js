@@ -1,3 +1,5 @@
+const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
@@ -5,21 +7,41 @@ const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
 const devMode = (process.env.NODE_ENV !== 'production');
 
 module.exports = {
-    mode:  process.env.NODE_ENV,
+    mode: process.env.NODE_ENV || 'development',
     entry: [
         "./src/main/webapp/assets/js/main.js",
     ],
     output: {
         publicPath: '',
-        filename: "./assets/js/bundle.js"
+        path: __dirname + '/dist',
+        filename: "[name].js",
+        chunkFilename: '[id].[chunkhash].js'
     },
     watch: false,
     devtool: "source-map", // any "source-map"-like devtool is possible
     module: {
         rules: [
+            // {
+            //     enforce: 'pre',
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     use: 'eslint-loader'
+            // },
             {
+
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: [
+                    path.resolve(__dirname, '/node_modules/')
+                ],
+                // Skip any files outside of your project's `src` directory
+                // include: [
+                //     path.resolve(__dirname, "src"),
+                // ],
+                loader: 'babel-loader?cacheDirectory=true',
+
+                options: {
+                    presets: ['@babel/preset-env']
+                }
             },
             {
                 test: /\.html$/,
@@ -87,7 +109,7 @@ module.exports = {
                     unformatted: ['p', 'i', 'b', 'span']
                 }
             },
-            replace: [ ' type="text/javascript"' ]
+            replace: [' type="text/javascript"']
         })
     ]
 };
