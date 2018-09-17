@@ -18,7 +18,14 @@ module.exports = {
         chunkFilename: '[id].[chunkhash].js'
     },
     watch: false,
-    devtool: "source-map", // any "source-map"-like devtool is possible
+    // any "source-map"-like devtool is possible
+    // More: https://webpack.js.org/configuration/devtool/
+    devtool: "inline-source-map",
+    // resolve: {
+    //    alias: {
+    //        app: path.resolve(__dirname, 'src/main/webapp/assets/js/'),
+    //    }
+    // },
     module: {
         rules: [
             // {

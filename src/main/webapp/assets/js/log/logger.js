@@ -1,10 +1,8 @@
-// noinspection ES6UnusedImports
-import style from "../styles/main.scss";
-
 console.log('logger.js is now loaded, Mike -1');
 
 export class Name {
     constructor(firstname, lastame) {
+        
         this._lastame = lastame;
         this._firstname = firstname;
     }
@@ -29,5 +27,9 @@ export class Name {
 const name = new Name("Mike", "Mitterer");
 
 console.log(name.firstname);
+
+export function showSomeValues({ text = "This is jus a value"} = {}) {
+    return `-${text}-`
+}
 
 
