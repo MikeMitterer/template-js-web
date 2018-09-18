@@ -15,8 +15,15 @@ module.exports = {
         publicPath: '',
         path: __dirname + '/dist',
         filename: "[name].js",
-        chunkFilename: '[id].[chunkhash].js'
+        chunkFilename: '[id].[chunkhash].js',
+        pathinfo: true
     },
+    // optimization: {
+    //     splitChunks: {
+    //         // include all types of chunks
+    //         chunks: 'all'
+    //     }
+    // },
     watch: false,
     // any "source-map"-like devtool is possible
     // More: https://webpack.js.org/configuration/devtool/

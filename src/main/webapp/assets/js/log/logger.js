@@ -8,7 +8,7 @@ export class Name {
     }
 
     get lastame() {
-        return this._lastame;
+        return `${this._lastame}-fromJS`;
     }
 
     set lastame(value) {
