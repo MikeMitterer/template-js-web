@@ -1,4 +1,4 @@
-var webpackConfig = require('./webpack.config.js');
+const webpackConfig = require('./webpack.config.js');
 
 module.exports = (config) => {
     config.set({
@@ -22,6 +22,7 @@ module.exports = (config) => {
         },
         reporters: ['progress'],
         colors: true,
+
         logLevel: config.LOG_INFO,
 
         browsers: ['ChromeHeadless']

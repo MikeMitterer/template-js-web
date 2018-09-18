@@ -21,6 +21,7 @@ module.exports = {
     // any "source-map"-like devtool is possible
     // More: https://webpack.js.org/configuration/devtool/
     devtool: "inline-source-map",
+    
     // resolve: {
     //    alias: {
     //        app: path.resolve(__dirname, 'src/main/webapp/assets/js/'),
@@ -40,14 +41,11 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, '/node_modules/')
                 ],
-                // Skip any files outside of your project's `src` directory
-                // include: [
-                //     path.resolve(__dirname, "src"),
-                // ],
-                loader: 'babel-loader?cacheDirectory=true',
-
-                options: {
-                    presets: ['@babel/preset-env']
+                use: {
+                    loader: 'babel-loader?cacheDirectory=true',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
                 }
             },
             {
