@@ -9,9 +9,13 @@ const devMode = (process.env.NODE_ENV !== 'production');
 
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
-    entry: [
-        "./src/main/webapp/assets/js/main.js",
-    ],
+    entry: {
+        // kotlin: [ path.resolve(__dirname,"kotlin_build/kotlinApp.js") ],
+        main: [
+            path.resolve(__dirname,"src/main/webapp/assets/js/main.js"),
+            path.resolve(__dirname,"kotlin_build/kotlinApp.js")
+        ],
+    },
     output: {
         publicPath: '',
         path: __dirname + '/dist',
@@ -54,7 +58,7 @@ module.exports = {
             {
 
                 test: /\.js$/,
-                include: path.resolve(__dirname, '../kotlin_build'),
+                include: path.resolve(__dirname, 'src/main/webapp/assets'),
                 exclude: [
                     path.resolve(__dirname, '/node_modules/'),
                     /kotlin\.js$/ // Kotlin runtime doesn't have sourcemaps at the moment
@@ -70,6 +74,20 @@ module.exports = {
                         loader: "source-map-loader"
                     }
                     ],
+                // enforce: 'pre'
+            },
+            {
+                test: /\.js$/,
+                include: path.resolve(__dirname, 'kotlin_build'),
+                exclude: [
+                    path.resolve(__dirname, '/node_modules/'),
+                    /kotlin\.js$/ // Kotlin runtime doesn't have sourcemaps at the moment
+                ],
+                use: [
+                    {
+                        loader: "source-map-loader"
+                    }
+                ],
                 enforce: 'pre'
             },
             {

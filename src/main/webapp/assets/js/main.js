@@ -20,7 +20,10 @@ console.log("Hello World!");
 //import * as ig from "../../../../../kotlin_build/kotlinApp";
 import * as ig from "kotlin_build/kotlinApp";
 
-let kn = new ig.app.KotlinName("Mike", "Mitterer");
+let kn = new ig.app.KotlinName("Mike", "Mitterer1");
+//let igx = new ig.app.info.InfoGenerator();
+
+
 
 console.log(`!${kn.fullname}!!`);
 //let igx = new ig._
