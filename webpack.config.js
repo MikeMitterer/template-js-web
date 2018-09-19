@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
+const KotlinWebpackPlugin = require('@jetbrains/kotlin-webpack-plugin');
 
 const devMode = (process.env.NODE_ENV !== 'production');
 
@@ -34,6 +35,14 @@ module.exports = {
     //        app: path.resolve(__dirname, 'src/main/webapp/assets/js/'),
     //    }
     // },
+    resolve: {
+        //modules: ['kotlin_build', 'node_modules']
+        modules: ['node_modules'],
+        alias: {
+            kotlin_build: path.resolve(__dirname, 'kotlin_build'),
+        }
+    },
+
     module: {
         rules: [
             // {
@@ -45,15 +54,23 @@ module.exports = {
             {
 
                 test: /\.js$/,
+                include: path.resolve(__dirname, '../kotlin_build'),
                 exclude: [
-                    path.resolve(__dirname, '/node_modules/')
+                    path.resolve(__dirname, '/node_modules/'),
+                    /kotlin\.js$/ // Kotlin runtime doesn't have sourcemaps at the moment
                 ],
-                use: {
-                    loader: 'babel-loader?cacheDirectory=true',
-                    options: {
-                        presets: ['@babel/preset-env']
+                use: [
+                    {
+                        loader: 'babel-loader?cacheDirectory=true',
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
+                    },
+                    {
+                        loader: "source-map-loader"
                     }
-                }
+                    ],
+                enforce: 'pre'
             },
             {
                 test: /\.html$/,
@@ -122,6 +139,11 @@ module.exports = {
                 }
             },
             replace: [' type="text/javascript"']
-        })
+        }),
+        new KotlinWebpackPlugin({
+            src: path.resolve(__dirname, 'src/main/kotlin'),
+            verbose: true
+        }),
+
     ]
 };
