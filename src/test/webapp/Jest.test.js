@@ -15,4 +15,14 @@ describe("Jest-Tests", () => {
         expect(text).toBe("-Mike-");
     });
 
+    test("Throw exception",() => {
+        let name = new Name("Mike", 1);
+        expect(name.firstname).toBe("Mike");
+
+        console.log(typeof 1)
+        //expect(name.lastame).toBe("Mitterer");
+
+    });
+
+
 });

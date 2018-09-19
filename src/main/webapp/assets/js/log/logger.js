@@ -2,7 +2,6 @@ console.log('logger.js is now loaded, Mike -1');
 
 export class Name {
     constructor(firstname, lastame) {
-        
         this._lastame = lastame;
         this._firstname = firstname;
     }
@@ -14,8 +13,6 @@ export class Name {
     set lastame(value) {
         this._lastame = value;
     }
-
-
 
     get firstname() {
         return this._firstname;

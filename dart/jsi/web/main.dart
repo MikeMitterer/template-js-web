@@ -1,10 +1,10 @@
-@JS('_log_logger__WEBPACK_IMPORTED_MODULE_2__')
+@JS('_log_logger__WEBPACK_IMPORTED_MODULE_2__["Name"]')
 library main.js;
 
 import 'dart:html';
 import 'package:js/js.dart';
 
-@JS()
+@JS('abc')
 class Name {
     external Name(final String firstname, final String lastname);
 

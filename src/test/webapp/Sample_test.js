@@ -7,7 +7,7 @@ describe("A suite", function () {
 
     it("show last name 'Mitterer'", function () {
         const name = new Name("Mike", "Mitterer");
-        expect(name.lastame).toBe("Mitterer");
+        expect(name.lastame).toBe("Mitterer-fromJS");
     });
 
     it("return text", function () {
