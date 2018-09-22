@@ -10,10 +10,10 @@ const devMode = (process.env.NODE_ENV !== 'production');
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
     entry: {
-        // kotlin: [ path.resolve(__dirname,"kotlin_build/kotlinApp.js") ],
+        kotlin: [ path.resolve(__dirname,"kotlin_build/kotlinApp.js") ],
         main: [
             path.resolve(__dirname,"src/main/webapp/assets/js/main.js"),
-            path.resolve(__dirname,"kotlin_build/kotlinApp.js")
+            // path.resolve(__dirname,"kotlin_build/kotlinApp.js")
         ],
     },
     output: {
@@ -23,12 +23,12 @@ module.exports = {
         chunkFilename: '[id].[chunkhash].js',
         pathinfo: true
     },
-    // optimization: {
-    //     splitChunks: {
-    //         // include all types of chunks
-    //         chunks: 'all'
-    //     }
-    // },
+    optimization: {
+        splitChunks: {
+            // include all types of chunks
+            chunks: 'all'
+        }
+    },
     watch: false,
     // any "source-map"-like devtool is possible
     // More: https://webpack.js.org/configuration/devtool/
@@ -61,7 +61,6 @@ module.exports = {
                 include: path.resolve(__dirname, 'src/main/webapp/assets'),
                 exclude: [
                     path.resolve(__dirname, '/node_modules/'),
-                    /kotlin\.js$/ // Kotlin runtime doesn't have sourcemaps at the moment
                 ],
                 use: [
                     {
